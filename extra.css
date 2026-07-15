@@ -37,3 +37,16 @@
 .readiness p { margin: 0; color: #f5d8d2; }
 @media (max-width: 850px) { .hardware-grid { grid-template-columns: 1fr; } }
 @media (max-width: 540px) { .link-cards { grid-template-columns: 1fr; } }
+.flash-targets { display: grid; gap: .75rem; margin: 1.25rem 0 2rem; }
+.flash-target { appearance: none; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; color: inherit; cursor: pointer; display: grid; gap: .2rem; padding: 1rem 1.1rem; text-align: left; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.flash-target:hover { transform: translateY(-1px); }
+.flash-target.selected { border-color: var(--green); box-shadow: 0 0 0 3px rgba(29,118,84,.14); }
+.flash-target strong { font-size: 1rem; }
+.flash-target span { font-size: .9rem; }
+.flash-target small { color: var(--muted); }
+.flasher-panel { align-items: center; background: #edf5f0; border: 1px solid rgba(29,118,84,.2); border-radius: 16px; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; margin: 1rem 0 1.5rem; padding: 1.1rem 1.2rem; }
+.flasher-panel > div { display: grid; gap: .15rem; }
+.flasher-panel small { color: var(--muted); }
+.flasher-label { color: var(--green); font-size: .7rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+esp-web-install-button { --esp-tools-button-color: var(--green); --esp-tools-button-text-color: #fff; --esp-tools-button-border-radius: 999px; }
+esp-web-install-button .button[disabled] { cursor: not-allowed; opacity: .45; }

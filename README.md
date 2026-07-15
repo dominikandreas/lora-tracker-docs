@@ -12,5 +12,5 @@ python3 -m http.server 8080
 GitHub Actions publishes the `main` branch to GitHub Pages.
 
 Pages cover getting started and secure provisioning, hardware selection,
-simulator/build coverage, strict protocol contracts and the current production
-readiness blockers.
+browser-based ESP flashing, simulator/build coverage, strict protocol contracts
+and the current production readiness blockers.
