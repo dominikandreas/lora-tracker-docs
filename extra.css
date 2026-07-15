@@ -50,3 +50,12 @@
 .flasher-label { color: var(--green); font-size: .7rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
 esp-web-install-button { --esp-tools-button-color: var(--green); --esp-tools-button-text-color: #fff; --esp-tools-button-border-radius: 999px; }
 esp-web-install-button .button[disabled] { cursor: not-allowed; opacity: .45; }
+
+.generated-doc h1 { font-size: clamp(2.7rem, 5vw, 4.7rem); }
+.generated-doc h2 { scroll-margin-top: 100px; }
+.generated-doc h3 { margin-top: 2rem; font-size: 1.3rem; }
+.generated-doc table { border-collapse: collapse; display: block; max-width: 100%; overflow-x: auto; }
+.generated-doc th, .generated-doc td { border: 1px solid var(--line); padding: .65rem .8rem; text-align: left; vertical-align: top; }
+.generated-doc th { background: #e8efe9; color: var(--ink); }
+.generated-doc blockquote { border-left: 4px solid var(--orange); color: var(--muted); margin: 1.5rem 0; padding: .2rem 1.2rem; }
+.generated-doc a { color: var(--green); text-underline-offset: 3px; }

@@ -13,4 +13,6 @@ GitHub Actions publishes the `main` branch to GitHub Pages.
 
 Pages cover getting started and secure provisioning, hardware selection,
 browser-based ESP flashing, simulator/build coverage, strict protocol contracts
-and the current production readiness blockers.
+and the current production readiness blockers. The detailed reference pages are
+rendered from the authoritative Markdown in `dominikandreas/lora-tracker`; the
+Pages workflow refreshes them on each deployment and every six hours.
