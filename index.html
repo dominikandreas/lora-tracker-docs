@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Documentation for LoRa Tracker, an open low-power location tracking platform.">
   <title>LoRa Tracker — Documentation</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="extra.css">
 </head>
 <body>
   <header class="nav-wrap">
@@ -14,8 +14,9 @@
       <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div id="nav-links" class="nav-links">
         <a href="getting-started.html">Get started</a>
+        <a href="hardware.html">Hardware</a>
         <a href="simulator.html">Simulator</a>
-        <a href="protocols.html">Protocols</a>
+        <a href="protocols.html">Reference</a>
         <a class="source-link" href="https://github.com/dominikandreas/lora-tracker">Source ↗</a>
       </div>
     </nav>
@@ -24,13 +25,14 @@
   <main>
     <section class="hero container">
       <div class="hero-copy">
-        <p class="eyebrow">Open · low power · field ready</p>
+        <p class="eyebrow">Open · low power · field-testable</p>
         <h1>Location tracking<br><span>past the last cell tower.</span></h1>
         <p class="lede">LoRa Tracker combines battery-powered GNSS trackers, long-range radio gateways, durable MQTT history, and a browser application in one inspectable system.</p>
         <div class="actions">
           <a class="button primary" href="getting-started.html">Build your first tracker</a>
           <a class="button secondary" href="simulator.html">Run the simulator</a>
         </div>
+        <div class="status-note"><strong>Production status:</strong> controlled field trials only. Authenticated LoRa/ACKs, signed firmware, durable gateway delivery and hardware qualification remain release blockers. <a href="production.html">Read the readiness assessment →</a></div>
       </div>
       <div class="signal-card" aria-label="Example radio path">
         <div class="signal-top"><span>TRACKER 01</span><span class="live">● ACTIVE</span></div>
@@ -57,7 +59,7 @@
       <div class="container split">
         <div><p class="eyebrow">Test before the field</p><h2>A deterministic system simulator</h2></div>
         <div><p>The brokerless simulator exercises telemetry validation, duplicate gateway receptions, archival, history pagination, service callbacks, and shared embedded C++ contracts.</p><pre><code>cd components/archiver
-python -m equine_archiver.simulator \
+python -m lora_tracker_archiver.simulator \
   --service-suite --embedded-suite</code></pre><a class="text-link" href="simulator.html">Understand simulation coverage →</a></div>
       </div>
     </section>
@@ -67,7 +69,7 @@ python -m equine_archiver.simulator \
       <h2>Stable boundaries, replaceable parts</h2>
       <div class="feature-grid">
         <article><h3>Offline by default</h3><p>RTC-backed queues and acknowledged delivery tolerate weak radio coverage and gateway outages.</p></article>
-        <article><h3>Versioned contracts</h3><p>Transport, history, configuration, onboarding, and MQTT payloads evolve independently.</p></article>
+        <article><h3>Strict contracts</h3><p>Transport, history, configuration, onboarding, and MQTT payloads reject unsupported schemas.</p></article>
         <article><h3>Multi-gateway reception</h3><p>A stable point identity lets several gateways hear the same packet without duplicating history.</p></article>
         <article><h3>Inspectable operation</h3><p>Plain C++, Python, SQLite, MQTT, and browser JavaScript keep the full path understandable.</p></article>
       </div>
