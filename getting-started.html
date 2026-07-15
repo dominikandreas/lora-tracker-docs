@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Get started — LoRa Tracker</title><link rel="stylesheet" href="styles.css"></head><body>
+<header class="nav-wrap"><nav class="nav container"><a class="brand" href="index.html"><span class="brand-mark">LT</span> LoRa Tracker</a><button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button><div id="nav-links" class="nav-links"><a class="active" href="getting-started.html">Get started</a><a href="simulator.html">Simulator</a><a href="protocols.html">Protocols</a><a class="source-link" href="https://github.com/dominikandreas/lora-tracker">Source ↗</a></div></nav></header>
+<main class="docs container"><aside><p>GET STARTED</p><a href="#requirements">Requirements</a><a href="#tracker">Tracker</a><a href="#gateway">Gateway</a><a href="#services">Services</a><a href="#deploy">Deployment order</a></aside><article class="prose"><p class="eyebrow">Get started</p><h1>Build the complete stack</h1><p class="lede">The repository contains two PlatformIO firmware projects, a Python archiver, a static browser app, and a simulator that connects their contracts.</p>
+<h2 id="requirements">Requirements</h2><ul><li>PlatformIO Core or the VS Code PlatformIO extension</li><li>Python 3.11 or newer</li><li>Node.js for browser codec tests</li><li>An MQTT broker with TCP and WebSocket listeners for deployment</li></ul>
+<h2 id="tracker">Compile a tracker</h2><p>Copy the example secrets header, choose the environment matching the physical board, and compile:</p><pre><code>cp components/tracker-firmware/secrets.example.h \
+   components/tracker-firmware/secrets.h
+
+pio run -d components/tracker-firmware \
+  -e heltec_wifi_lora_32_v2
+
+# ESP32-S3 Wireless Tracker alternative
+pio run -d components/tracker-firmware \
+  -e heltec_wireless_tracker</code></pre><div class="notice"><strong>Factory seeds only.</strong> Values in <code>secrets.h</code> initialize an unprovisioned device. Active configuration is stored transactionally in NVS.</div>
+<h2 id="gateway">Compile the gateway</h2><pre><code>cp components/gateway-firmware/secrets.example.h \
+   components/gateway-firmware/secrets.h
+
+pio run -d components/gateway-firmware \
+  -e heltec_wifi_lora_32_v2</code></pre>
+<h2 id="services">Run the archiver and web app</h2><pre><code>cd components/archiver
+python -m venv .venv
+. .venv/bin/activate
+pip install .
+python -m equine_archiver
+
+# In another terminal
+cd components/web-app
+python3 -m http.server 8080</code></pre>
+<h2 id="deploy">Safe deployment order</h2><ol><li>Back up the gateway configuration and archive database.</li><li>Deploy the archiver.</li><li>Flash and validate the gateway.</li><li>Flash trackers and confirm acknowledgements.</li><li>Deploy the web app and request recent history.</li></ol></article></main><footer><div class="container"><span>LoRa Tracker documentation</span><a href="index.html">Home</a></div></footer><script src="site.js"></script></body></html>
