@@ -14,7 +14,7 @@
       <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div id="nav-links" class="nav-links">
         <a href="getting-started.html">Get started</a>
-        <a href="hardware.html">Hardware</a><a href="flash.html">Flash</a>
+        <a href="hardware.html">Hardware</a><a href="repeater.html">Repeaters</a><a href="flash.html">Flash</a>
         <a href="simulator.html">Simulator</a>
         <a href="protocols.html">Reference</a>
         <a class="source-link" href="https://github.com/dominikandreas/lora-tracker">Source ↗</a>
@@ -27,7 +27,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Open · low power · field-testable</p>
         <h1>Location tracking<br><span>past the last cell tower.</span></h1>
-        <p class="lede">LoRa Tracker combines battery-powered GNSS trackers, long-range radio gateways, durable MQTT history, and a browser application in one inspectable system.</p>
+        <p class="lede">LoRa Tracker combines battery-powered GNSS trackers, keyless multi-hop repeaters, long-range radio gateways, durable MQTT history, and a browser application in one inspectable system.</p>
         <div class="actions">
           <a class="button primary" href="flash.html">Flash a release</a>
           <a class="button secondary" href="getting-started.html">Build from source</a>
@@ -49,9 +49,10 @@
       <h2>From satellite fix to browser map</h2>
       <div class="flow">
         <article><span>01</span><h3>Tracker</h3><p>Acquires GNSS fixes, adapts its sleep policy, compresses route history, and retries until a gateway acknowledges delivery.</p></article>
-        <article><span>02</span><h3>Gateway</h3><p>Receives multiple trackers, validates frames, suppresses duplicates, and publishes stable point events to MQTT.</p></article>
-        <article><span>03</span><h3>Archiver</h3><p>Stores observations in SQLite, combines receptions from multiple gateways, and serves chunked history requests.</p></article>
-        <article><span>04</span><h3>Web app</h3><p>Connects over MQTT WebSockets, keeps a local IndexedDB cache, and renders recent routes without a server framework.</p></article>
+        <article><span>02</span><h3>Repeater</h3><p>Extends encrypted history and ACKs with bounded hops, deterministic suppression and no tracker keys.</p></article>
+        <article><span>03</span><h3>Gateway</h3><p>Receives multiple trackers, validates frames, suppresses duplicates, and publishes stable point events to MQTT.</p></article>
+        <article><span>04</span><h3>Archiver</h3><p>Stores observations in SQLite, combines receptions from multiple gateways, and serves chunked history requests.</p></article>
+        <article><span>05</span><h3>Web app</h3><p>Connects over MQTT WebSockets, keeps a local IndexedDB cache, and renders recent routes without a server framework.</p></article>
       </div>
     </section>
 

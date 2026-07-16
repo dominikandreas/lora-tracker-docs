@@ -20,6 +20,7 @@ PAGES = {
     "docs/ONBOARDING.md": ("Onboarding", "reference/onboarding.html"),
     "docs/OPERATIONS.md": ("Operations", "reference/operations.html"),
     "docs/PRODUCTION_READINESS.md": ("Production readiness", "reference/production-readiness.html"),
+    "docs/REPEATERS.md": ("Repeaters", "reference/repeaters.html"),
     "docs/SIMULATION_COVERAGE.md": ("Simulation coverage", "reference/simulation-coverage.html"),
     "docs/protocols/CONFIGURATION.md": ("Configuration protocol", "reference/protocols/configuration.html"),
     "docs/protocols/LORA_PROTOCOL.md": ("LoRa protocol", "reference/protocols/lora-protocol.html"),
@@ -36,6 +37,7 @@ def navigation(prefix: str) -> str:
   <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <div id="nav-links" class="nav-links">
     <a href="{prefix}getting-started.html">Get started</a><a href="{prefix}hardware.html">Hardware</a>
+    <a href="{prefix}repeater.html">Repeaters</a>
     <a href="{prefix}flash.html">Flash</a><a href="{prefix}simulator.html">Simulator</a>
     <a class="active" href="{prefix}protocols.html">Reference</a>
     <a class="source-link" href="https://github.com/dominikandreas/lora-tracker">Source ↗</a>
