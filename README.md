@@ -2,8 +2,10 @@
 
 Static documentation site for [LoRa Tracker](https://github.com/dominikandreas/lora-tracker).
 
-The site has no build-time dependencies. Open `index.html` locally or serve the
-directory with any static HTTP server:
+The hand-authored pages can be opened directly. A complete Pages build also
+checks out the source repository, renders its authoritative Markdown and
+compiles the portable firmware policy core to WebAssembly for `/simulator/`.
+To preview only the hand-authored pages, use any static HTTP server:
 
 ```bash
 python3 -m http.server 8080

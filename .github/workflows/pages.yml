@@ -33,10 +33,18 @@ jobs:
           ref: main
           path: _source
           persist-credentials: false
-      - name: Render authoritative source documentation
+      - name: Install documentation and WebAssembly build tools
         run: |
           python -m pip install --disable-pip-version-check Markdown==3.8.2
-          python scripts/render_source_docs.py --source _source --output _site
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y emscripten
+      - name: Render authoritative source documentation
+        run: python scripts/render_source_docs.py --source _source --output _site
+      - name: Build the browser Network Lab
+        run: |
+          make -C _source/components/simulator-web wasm
+          mkdir -p _site/simulator
+          cp -a _source/components/simulator-web/app/. _site/simulator/
       - name: Assemble static site
         run: cp -a *.html *.css *.js .nojekyll assets _site/
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
