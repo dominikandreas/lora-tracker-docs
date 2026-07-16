@@ -40,6 +40,33 @@ jobs:
           sudo apt-get install --no-install-recommends -y emscripten
       - name: Render authoritative source documentation
         run: python scripts/render_source_docs.py --source _source --output _site
+      - name: Mirror latest factory images for browser flashing
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import urllib.request
+
+          api = urllib.request.Request(
+              "https://api.github.com/repos/dominikandreas/lora-tracker/releases/latest",
+              headers={"Accept": "application/vnd.github+json", "User-Agent": "lora-tracker-docs"},
+          )
+          with urllib.request.urlopen(api) as response:
+              release = json.load(response)
+          output = pathlib.Path("_site/firmware")
+          output.mkdir(parents=True, exist_ok=True)
+          images = [asset for asset in release["assets"] if asset["name"].endswith(".factory.bin")]
+          if not images:
+              raise SystemExit(f"Release {release['tag_name']} has no factory images")
+          for asset in images:
+              request = urllib.request.Request(
+                  asset["browser_download_url"],
+                  headers={"Accept": "application/octet-stream", "User-Agent": "lora-tracker-docs"},
+              )
+              with urllib.request.urlopen(request) as response:
+                  (output / asset["name"]).write_bytes(response.read())
+          print(f"Mirrored {len(images)} factory images from {release['tag_name']}")
+          PY
       - name: Build the browser Network Lab
         run: |
           make -C _source/components/simulator-web wasm

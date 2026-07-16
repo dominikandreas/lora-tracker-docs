@@ -24,17 +24,22 @@
       return;
     }
     if (manifestUrl) URL.revokeObjectURL(manifestUrl);
+    // GitHub release download redirects do not expose CORS headers to GitHub
+    // Pages. The Pages workflow mirrors factory images into /firmware/ so the
+    // ESP Web Tools fetch remains same-origin and works in every supported
+    // browser.
+    const firmwareUrl = new URL(`firmware/${asset.name}`, document.baseURI).href;
     const manifest = {
       name: `LoRa Tracker ${target}`,
       version: release.tag_name.replace(/^v/, ''),
       new_install_prompt_erase: true,
       new_install_improv_wait_time: 0,
       builds: [{ chipFamily: targetButton.dataset.chip, improv: false,
-        parts: [{ path: asset.browser_download_url, offset: 0 }] }]
+        parts: [{ path: firmwareUrl, offset: 0 }] }]
     };
     manifestUrl = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: 'application/json' }));
     installer.manifest = manifestUrl;
-    releaseStatus.textContent = `${release.tag_name} · ${targetButton.dataset.chip} · ${Math.ceil(asset.size / 1024)} KiB`;
+    releaseStatus.textContent = `${release.tag_name} · ${targetButton.dataset.chip} · ${Math.ceil(asset.size / 1024)} KiB · Pages mirror`;
     activate.disabled = false;
   }
 
