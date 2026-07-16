@@ -32,7 +32,7 @@
           <a class="button primary" href="flash.html">Flash a release</a>
           <a class="button secondary" href="getting-started.html">Build from source</a>
         </div>
-        <div class="status-note"><strong>Production status:</strong> controlled field trials only. Radio and provisioning authentication are implemented; device-enforced signed boot, durable gateway delivery, key lifecycle tooling and hardware qualification remain release blockers. <a href="production.html">Read the readiness assessment →</a></div>
+        <div class="status-note"><strong>Production status:</strong> controlled field trials only. Radio and provisioning authentication are implemented; device-enforced signed boot, a power-loss-safe tracker queue, key lifecycle tooling and hardware qualification remain release blockers. <a href="production.html">Read the readiness assessment →</a></div>
       </div>
       <div class="signal-card" aria-label="Example radio path">
         <div class="signal-top"><span>TRACKER 01</span><span class="live">● ACTIVE</span></div>
@@ -40,7 +40,7 @@
           <span class="point p1"></span><span class="point p2"></span><span class="point p3"></span><span class="point p4"></span>
           <svg viewBox="0 0 500 220" role="img"><path d="M35 170 C95 95,145 190,205 115 S320 70,365 125 S430 125,470 42"/></svg>
         </div>
-        <div class="metrics"><div><b>868</b><small>MHz</small></div><div><b>12</b><small>points queued</small></div><div><b>89%</b><small>battery</small></div></div>
+        <div class="metrics"><div><b>868.1</b><small>MHz · DE</small></div><div><b>12</b><small>points queued</small></div><div><b>89%</b><small>battery</small></div></div>
       </div>
     </section>
 
@@ -69,7 +69,7 @@ python -m lora_tracker_archiver.simulator \
       <p class="eyebrow">Designed for evolution</p>
       <h2>Stable boundaries, replaceable parts</h2>
       <div class="feature-grid">
-        <article><h3>Offline by default</h3><p>RTC-backed queues and acknowledged delivery tolerate weak radio coverage and gateway outages.</p></article>
+        <article><h3>Offline by default</h3><p>RTC-backed queues and archive-confirmed delivery tolerate weak radio coverage and gateway outages; hard-reset persistence remains planned.</p></article>
         <article><h3>Strict contracts</h3><p>Transport, history, configuration, onboarding, and MQTT payloads reject unsupported schemas.</p></article>
         <article><h3>Multi-gateway reception</h3><p>A stable point identity lets several gateways hear the same packet without duplicating history.</p></article>
         <article><h3>Inspectable operation</h3><p>Plain C++, Python, SQLite, MQTT, and browser JavaScript keep the full path understandable.</p></article>

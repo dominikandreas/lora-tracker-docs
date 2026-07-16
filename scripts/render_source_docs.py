@@ -20,6 +20,7 @@ PAGES = {
     "docs/ONBOARDING.md": ("Onboarding", "reference/onboarding.html"),
     "docs/OPERATIONS.md": ("Operations", "reference/operations.html"),
     "docs/PRODUCTION_READINESS.md": ("Production readiness", "reference/production-readiness.html"),
+    "docs/RADIO_COMPLIANCE_DE.md": ("Germany radio compliance", "reference/radio-compliance-de.html"),
     "docs/REPEATERS.md": ("Repeaters", "reference/repeaters.html"),
     "docs/SIMULATION_COVERAGE.md": ("Simulation coverage", "reference/simulation-coverage.html"),
     "docs/protocols/CONFIGURATION.md": ("Configuration protocol", "reference/protocols/configuration.html"),
