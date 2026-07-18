@@ -63,6 +63,9 @@ esp-web-install-button .button[disabled] { cursor: not-allowed; opacity: .45; }
 .generated-doc th { background: #e8efe9; color: var(--ink); }
 .generated-doc blockquote { border-left: 4px solid var(--orange); color: var(--muted); margin: 1.5rem 0; padding: .2rem 1.2rem; }
 .generated-doc a { color: var(--green); text-underline-offset: 3px; }
+.application-frame { width: 100%; height: 760px; margin: 2rem 0; border: 1px solid var(--line); border-radius: 16px; background: #0d120e; }
+.lab-docs { width: min(1500px, calc(100% - 40px)); grid-template-columns: 180px minmax(0, 1fr); }
+@media (max-width: 850px) { .lab-docs { width: min(100% - 28px, 1500px); grid-template-columns: 1fr; } }
 
 .product-hero { background: var(--green); border-radius: 18px; color: white; display: grid; grid-template-columns: 1.25fr .75fr; margin: 1.25rem 0 1.5rem; overflow: hidden; }
 .product-hero img { align-self: center; display: block; height: auto; max-height: 360px; max-width: 100%; object-fit: contain; width: 100%; }

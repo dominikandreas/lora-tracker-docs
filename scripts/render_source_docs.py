@@ -39,7 +39,7 @@ def navigation(prefix: str) -> str:
   <div id="nav-links" class="nav-links">
     <a href="{prefix}getting-started.html">Get started</a><a href="{prefix}hardware.html">Hardware</a>
     <a href="{prefix}repeater.html">Repeaters</a>
-    <a href="{prefix}flash.html">Flash</a><a href="{prefix}simulator.html">Simulator</a>
+    <a href="{prefix}flash.html">Flash</a><a href="{prefix}app/">Dashboard</a><a href="{prefix}simulator.html">Simulator</a>
     <a class="active" href="{prefix}protocols.html">Reference</a>
     <a class="source-link" href="https://github.com/dominikandreas/lora-tracker">Source ↗</a>
   </div></nav></header>'''

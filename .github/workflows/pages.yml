@@ -27,6 +27,10 @@ jobs:
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           repository: dominikandreas/lora-tracker
@@ -68,12 +72,27 @@ jobs:
           print(f"Mirrored {len(images)} factory images from {release['tag_name']}")
           PY
       - name: Build the browser Network Lab
+        working-directory: _source/components/simulator-web
         run: |
-          make -C _source/components/simulator-web wasm
-          mkdir -p _site/simulator
-          cp -a _source/components/simulator-web/app/. _site/simulator/
+          npm ci
+          npm run build
+      - name: Build the Tracker Console
+        working-directory: _source/components/web-app
+        run: |
+          npm ci
+          npm run build
+          npm run package
       - name: Assemble static site
-        run: cp -a *.html *.css *.js .nojekyll assets _site/
+        run: |
+          cp -a *.html *.css *.js .nojekyll assets _site/
+          mkdir -p _site/app _site/simulator
+          cp -a _source/components/web-app/dist/. _site/app/
+          cp -a _source/components/simulator-web/app/. _site/simulator/
+          test -f _site/app/index.html
+          test -f _site/app/vendor/leaflet/leaflet.js
+          test -f _site/simulator/index.html
+          test -f _site/simulator/firmware-core.wasm
+          python scripts/validate_site.py _site
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
