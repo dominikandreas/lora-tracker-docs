@@ -88,10 +88,6 @@ jobs:
           mkdir -p _site/app _site/simulator
           cp -a _source/components/web-app/dist/. _site/app/
           cp -a _source/components/simulator-web/app/. _site/simulator/
-          test -f _site/app/index.html
-          test -f _site/app/vendor/leaflet/leaflet.js
-          test -f _site/simulator/index.html
-          test -f _site/simulator/firmware-core.wasm
           python scripts/validate_site.py _site
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
